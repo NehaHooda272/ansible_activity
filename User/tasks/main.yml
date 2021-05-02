@@ -1,0 +1,7 @@
+---
+- name: create user1
+  user:
+   name: User1
+   password: "{{ vars.pass1 }}"
+ 
+ 
