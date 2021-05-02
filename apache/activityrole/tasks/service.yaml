@@ -1,0 +1,19 @@
+---
+- name: start and enable apache
+  service: 
+    name: httpd
+    state: started
+    enabled: yes
+  when: ansible_os_family == "RedHat"
+- name: start apache on unbuntu
+  service:
+      name: apache2
+      enabled: yes
+      state: started
+   when: ansible_os_family == "Debian"
+- name: Stop service Tomcat
+  win_service:
+       name: Tomcat8
+       state: started
+   when: ansible_os_family == "Windows"
+

@@ -1,0 +1,23 @@
+---
+- name: copy index.html
+  copy:
+    src: files/index.html
+    dest: /var/www/html/index.html
+  notify:
+  - restart apache
+  when: ansible_os_family == "RedHat"
+- name: copy index.html
+  copy:
+    src: files/index.html
+    dest: /var/www/html/index.html
+  notify:
+  - restart apache2
+  when: ansible_os_family == "Debian"
+- name:  copy index.html
+  ansible.windows.win_copy:
+    src: files/index.html
+    dest: C:/Apache24/htdocs/index.html
+  notify:
+  - restart tomcat
+  when: ansible_os_family == "Windows"
+
